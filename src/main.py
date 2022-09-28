@@ -1,4 +1,21 @@
+import logging
+import os
+
 import click
+from rich.logging import RichHandler
+from rich.traceback import install as rich_traceback_install
+
+from install_plugin import install_plugin_server
+from remove_plugin import remove_plugin_server
+
+logging.basicConfig(
+    level=os.getenv("LOG_LEVEL", logging.INFO),
+    format="%(message)s",
+    datefmt="[%X]",
+    handlers=[RichHandler()],
+)
+# only show locals if the log level is smaller than INFO level
+rich_traceback_install(show_locals=logging.getLogger().level < logging.INFO)
 
 
 @click.group()
@@ -6,18 +23,8 @@ def cli():
     pass
 
 
-@click.command(help="Install plugin on instance")
-def install():
-    click.echo("Installing plugin")
-
-
-@click.command(help="Remove plugin on instance")
-def remove():
-    click.echo("Removing plugin")
-
-
-cli.add_command(install)
-cli.add_command(remove)
+cli.add_command(install_plugin_server)
+cli.add_command(remove_plugin_server)
 
 if __name__ == "__main__":
     cli()
