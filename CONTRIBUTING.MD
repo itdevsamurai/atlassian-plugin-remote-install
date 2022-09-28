@@ -1,3 +1,5 @@
+# CONTRIBUTING
+
 ## Development setup
 
 * Python >= 3.9. Refer Dockerfile to know which version is used officialy.
@@ -17,7 +19,7 @@ If you want to add dependencies into `requirements.txt` or `dev-requirements.txt
 
 TBD
 
-## Contributing
+## Contributing guide
 
 * Fork the project
 * Make changes, test your changes

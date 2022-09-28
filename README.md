@@ -11,6 +11,8 @@ Status:
   * [ ] Jira
   * [ ] Confluence
 
+See [CONTRIBUTING](CONTRIBUTING.MD) for development setup & contributing guide.
+
 ## Usage
 
 ### Docker
