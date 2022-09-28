@@ -1,6 +1,15 @@
 # atlassian-plugin-remote-installation-docker
 
-Remotely install Atlassian plugins to Jira, Confluence server/datacenter.
+Remotely install Atlassian plugins to Jira, Confluence server/datacenter/cloud.
+
+Status:
+
+* [ ] Server/datacenter
+  * [x] Jira
+  * [ ] Confluence
+* [ ] Cloud
+  * [ ] Jira
+  * [ ] Confluence
 
 ## Usage
 
