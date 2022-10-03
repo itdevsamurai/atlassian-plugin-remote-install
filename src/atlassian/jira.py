@@ -15,6 +15,18 @@ class JiraServer(AtlassianServerAPI):
         session: requests.Session | None = None,
     ) -> None:
         super().__init__(url, username, password, session)
+        self.status = self._check_instance()
+
+    def _check_instance(self) -> bool:
+        try:
+            res = self.request()
+            res.raise_for_status()
+        except (
+            requests.exceptions.HTTPError,
+            requests.exceptions.ConnectionError,
+        ):
+            return False
+        return True
 
     def upload_plugin(self, plugin_path: Path) -> dict:
         self.logger.info(f"Uploading plugin '{plugin_path}' to instance.")
@@ -33,8 +45,9 @@ class JiraServer(AtlassianServerAPI):
         self.logger.debug(f"Upload plugin response: {res.status_code} | {res.text}")
         res.raise_for_status()
         if res.status_code != 202:
-            self.logger.error(f"Unable to upload plugin.")
-            raise Exception(f"")
+            msg = f"Unable to upload plugin. Response: {res.status_code} | {res.text}"
+            self.logger.error(msg)
+            raise Exception(msg)
 
         data = res.text
         # This API response can have redundant textarea tag wrapping json data

@@ -1,15 +1,15 @@
 import logging
-import os
 
 import click
 from rich.logging import RichHandler
 from rich.traceback import install as rich_traceback_install
 
+from config import Config
 from install_plugin import install_plugin_server
 from remove_plugin import remove_plugin_server
 
 logging.basicConfig(
-    level=os.getenv("LOG_LEVEL", logging.INFO),
+    level=Config.LOG_LEVEL,
     format="%(message)s",
     datefmt="[%X]",
     handlers=[RichHandler()],
