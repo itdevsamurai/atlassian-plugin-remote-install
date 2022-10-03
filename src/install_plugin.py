@@ -24,7 +24,7 @@ logger = logging.getLogger(__name__)
     multiple=True,
     help="Apprise notification URL",
 )
-@click.option("--timeout", default=90, help="Install timeout in second")
+@click.option("--timeout", default=120, help="Install timeout in second")
 def install_plugin_server(
     filepath: str,
     url: str,
@@ -54,7 +54,7 @@ def install_plugin_server(
     for key, val in vars.items():
         if val == "":
             raise ValueError(f"'{key}' is not set")
-    if len(notify) == 0 and Config.NOTIFY_TITLE:
+    if len(notify) == 0 and Config.NOTIFY_TITLE != "":
         notify = [Config.NOTIFY_URL]
 
     filepath = click.format_filename(filepath)

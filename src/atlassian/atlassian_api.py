@@ -33,7 +33,7 @@ class AtlassianServerAPI:
         username: str,
         password: str,
         session: requests.Session | None = None,
-        timeout: int = 15,
+        timeout: int = 30,
     ) -> None:
         self.logger = logging.getLogger(__name__)
         self.url = url.strip("/")
