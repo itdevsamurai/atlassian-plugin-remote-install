@@ -1,9 +1,6 @@
 import logging
 import time
-from pathlib import Path
-
 import click
-
 from atlassian.jira import JiraServer
 from config import Config
 from utils.apprise_notify import NotifyType, apprise_notify
