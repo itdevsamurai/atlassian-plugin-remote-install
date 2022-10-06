@@ -73,7 +73,7 @@ def remove_plugin_server(
             final_msg = f"Removing plugin failed. Retry {retryTime}. Timeouted after {timeout} seconds"
         else:
             err_flag = False
-            final_msg = f"Removing plugin is successful"
+            final_msg = "Removing plugin is successful"
             break
 
     if notify:
@@ -89,7 +89,7 @@ def remove_plugin_server(
         elif status:
             logger.info(f"Notification sent to {len(notify)} urls.")
         else:
-            logger.error(f"Unable to send some notifications.")
+            logger.error("Unable to send some notifications.")
 
     if err_flag:
         logger.error(final_msg)
