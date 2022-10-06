@@ -99,3 +99,24 @@ class JiraServer(AtlassianServerAPI):
             raise ValueError(msg)
 
         return res_json
+
+    def remove_plugin(self, plugin_key: str):
+        """
+        Delete plugin
+        :param plugin_key:
+        :return:
+        """
+        self.logger.info(f"Removing plugin '{plugin_key}' from instance.")
+        res = self.request(
+            method="DELETE",
+            path=f"/rest/plugins/1.0/{plugin_key}-key",
+            headers=AtlassianServerAPIHeaders.NO_CHECK,
+        )
+        self.logger.debug(f"Removing plugin response: {res.status_code} | {res.text}")
+        res.raise_for_status()
+        if res.status_code != 204:
+            msg = f"Unable to remove plugin. Response: {res.status_code} | {res.text}"
+            self.logger.error(msg)
+            raise Exception(msg)
+
+        return True
