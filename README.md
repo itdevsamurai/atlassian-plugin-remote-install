@@ -1,4 +1,4 @@
-# atlassian-plugin-remote-installation-docker
+# atlassian-plugin-remote-install
 
 Remotely install Atlassian plugins to Jira, Confluence server/datacenter/cloud.
 
@@ -21,7 +21,7 @@ Quick start:
 
 ```shell
 docker run --rm -it \
-    ghcr.io/itdevsamurai/atlassian-plugin-remote-installation-docker \
+    ghcr.io/itdevsamurai/atlassian-plugin-remote-install \
     install-plugin-server \
     -url https://jira.example.com \
     -u username \

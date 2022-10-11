@@ -28,7 +28,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: |
-            ghcr.io/itdevsamurai/atlassian-plugin-remote-installation-docker
+            ghcr.io/itdevsamurai/atlassian-plugin-remote-install
           tags: |
             type=ref,event=branch
             type=ref,event=pr
