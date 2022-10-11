@@ -33,7 +33,7 @@ class AtlassianServerAPI:
         username: str,
         password: str,
         session: requests.Session | None = None,
-        timeout: int = 30,
+        timeout: float = 30,
     ) -> None:
         self.logger = logging.getLogger(__name__)
         self.url = url.strip("/")
@@ -57,6 +57,7 @@ class AtlassianServerAPI:
         json=None,
         files=None,
         allow_redirects: bool = True,
+        timeout: float = 0,
     ):
         if headers is None:
             headers = AtlassianServerAPIHeaders.DEFAULT
@@ -77,7 +78,7 @@ class AtlassianServerAPI:
             data=data,
             json=json,
             files=files,
-            timeout=self.timeout,
+            timeout=timeout if timeout else self.timeout,
             allow_redirects=allow_redirects,
         )
         res.raise_for_status()
