@@ -2,7 +2,7 @@
 name = "atlassian-plugin-remote-installaion"
 
 description = "Remotely install plugin to Atlassian instance"
-version = "0.2.3"
+version = "0.3.0"
 
 authors = [{ name = "Trung Le", email = "trung.le@devsamurai.com" }]
 
@@ -24,7 +24,7 @@ dev = ["black", "isort", "pylint", "tbump"]
 # github_url = "https://github.com/<user or organization>/<project>/"
 
 [tool.tbump.version]
-current = "0.2.3"
+current = "0.3.0"
 
 # Example of a semver regexp.
 # Make sure this matches current_version before
