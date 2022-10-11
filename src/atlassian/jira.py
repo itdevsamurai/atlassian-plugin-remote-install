@@ -24,11 +24,22 @@ class JiraServer(AtlassianServerAPI):
                 method="GET",
                 path="/secure/AboutPage.jspa",
             )
+            self.logger.debug(f"Getting Jira version: {res.status_code} | {res.text}")
             res.raise_for_status()
-        except (
-            requests.exceptions.HTTPError,
-            requests.exceptions.ConnectionError,
-        ):
+        except requests.exceptions.HTTPError as err:
+            status_code = err.response.status_code
+            handled_err_code = {
+                401: "Invalid username/password",
+                403: "Forbidden to view the page or instance is protected by CAPTCHA.",
+            }
+            if status_code in handled_err_code.keys():
+                msg = f"Error {status_code}: {handled_err_code[status_code]}"
+                self.logger.error(msg)
+                raise Exception(msg)
+            self.logger.error(f"Error getting Jira version: {status_code}")
+            raise err
+
+        except requests.exceptions.ConnectionError:
             return None
         version_regex = re.search(r"<h3>Jira v([\d\.]+)<\/h3>", res.text)
         if version_regex is None:
