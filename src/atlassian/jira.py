@@ -1,8 +1,6 @@
 import json
 from pathlib import Path
-
 import requests
-
 from .atlassian_api import AtlassianServerAPI, AtlassianServerAPIHeaders
 
 
@@ -99,3 +97,32 @@ class JiraServer(AtlassianServerAPI):
             raise ValueError(msg)
 
         return res_json
+
+    def remove_plugin(self, plugin_key: str) -> bool:
+        """Remove plugin from server instance
+
+        Remove plugin from server instance using api, retry if fails
+
+        Args:
+            plugin_key (str): Or App key, available on App manage setting
+
+        Returns:
+            bool: status
+
+        Raises:
+            Exception: An exception raised when response code is not 204
+        """
+        self.logger.info(f"Removing plugin '{plugin_key}' from instance.")
+        res = self.request(
+            method="DELETE",
+            path=f"/rest/plugins/1.0/{plugin_key}-key",
+            headers=AtlassianServerAPIHeaders.NO_CHECK,
+        )
+        self.logger.debug(f"Removing plugin response: {res.status_code} | {res.text}")
+        res.raise_for_status()
+        if res.status_code != 204:
+            msg = f"Unable to remove plugin. Response: {res.status_code} | {res.text}"
+            self.logger.error(msg)
+            raise Exception(msg)
+
+        return True
