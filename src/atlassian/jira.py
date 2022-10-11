@@ -1,6 +1,9 @@
 import json
+import re
 from pathlib import Path
+
 import requests
+
 from .atlassian_api import AtlassianServerAPI, AtlassianServerAPIHeaders
 
 
@@ -13,18 +16,24 @@ class JiraServer(AtlassianServerAPI):
         session: requests.Session | None = None,
     ) -> None:
         super().__init__(url, username, password, session)
-        self.status = self._check_instance()
+        self.version = self._get_jira_version()
 
-    def _check_instance(self) -> bool:
+    def _get_jira_version(self) -> str | None:
         try:
-            res = self.request()
+            res = self.request(
+                method="GET",
+                path="/secure/AboutPage.jspa",
+            )
             res.raise_for_status()
         except (
             requests.exceptions.HTTPError,
             requests.exceptions.ConnectionError,
         ):
-            return False
-        return True
+            return None
+        version_regex = re.search(r"<h3>Jira v([\d\.]+)<\/h3>", res.text)
+        if version_regex is None:
+            return None
+        return version_regex.group(1)
 
     def upload_plugin(self, plugin_path: Path) -> dict:
         self.logger.info(f"Uploading plugin '{plugin_path}' to instance.")
@@ -97,6 +106,20 @@ class JiraServer(AtlassianServerAPI):
             raise ValueError(msg)
 
         return res_json
+
+    def get_plugin_marketplace_info(self, plugin_key: str) -> dict:
+        self.logger.info(f"Getting marketplace info for plugin '{plugin_key}'")
+        res = self.request(
+            method="GET",
+            path=f"/rest/plugins/1.0/{plugin_key}/marketplace",
+            headers=AtlassianServerAPIHeaders.NO_CHECK,
+        )
+        self.logger.debug(
+            f"Getting marketplace info of plugin {plugin_key}: "
+            f"{res.status_code} | {res.text}"
+        )
+        res.raise_for_status()
+        return res.json()
 
     def remove_plugin(self, plugin_key: str) -> bool:
         """Remove plugin from server instance

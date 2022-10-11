@@ -1,6 +1,8 @@
 import logging
 import time
+
 import click
+
 from atlassian.jira import JiraServer
 from config import Config
 from utils.apprise_notify import NotifyType, apprise_notify
@@ -49,7 +51,7 @@ def remove_plugin_server(
         password=password,
     )
 
-    if jira.status is False:
+    if jira.version is None:
         msg = f"Instance '{url}' is not reachable."
         logger.error(msg)
         if notify:

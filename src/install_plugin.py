@@ -58,14 +58,16 @@ def install_plugin_server(
         notify = [Config.NOTIFY_URL]
 
     filepath = click.format_filename(filepath)
-    logger.info(f"Installing plugin to {url} using '{filepath}'. Timeout: {timeout}")
-    jira = JiraServer(
-        url=url,
-        username=username,
-        password=password,
+    logger.info(
+        f"Installing plugin to {vars['url']} using '{filepath}'. Timeout: {timeout}"
     )
-    if jira.status is False:
-        msg = f"Instance '{url}' is not reachable."
+    jira = JiraServer(
+        url=vars["url"],
+        username=vars["username"],
+        password=vars["password"],
+    )
+    if jira.version is None:
+        msg = f"Instance '{vars['url']}' is not reachable."
         logger.error(msg)
         if notify:
             apprise_notify(
@@ -122,11 +124,28 @@ def install_plugin_server(
 
         # redirected to plugin info
         final_msg = (
-            f"Plugin '{task_info_res['key']}' is installed."
-            f" Enabled: {task_info_res['enabled']}."
-            f" Version: {task_info_res['version']}."
+            f"\nPlugin *{task_info_res['key']}* is installed."
+            f"\nEnabled: *{task_info_res['enabled']}*."
+            f" Version: *{task_info_res['version']}*."
         )
+
+        # if there's licensing, add licensing info
+        if "usesLicensing" in task_info_res:
+            marketplace_info = jira.get_plugin_marketplace_info(
+                plugin_key=task_info_res["key"]
+            )
+            if "licenseDetails" in marketplace_info:
+                license_info = marketplace_info["licenseDetails"]
+                final_msg += (
+                    f"\nLicense valid: *{license_info['valid']}*,"
+                    f" expiry date: *{license_info['expiryDateString']}*"
+                )
+            else:
+                final_msg += f"\n*NOT LICENSED*."
         break
+
+    # append jira info to the top of the final msg
+    final_msg = f"{vars['url']} - Jira *v{jira.version}*\n" + final_msg
 
     if notify:
         status = apprise_notify(
