@@ -15,6 +15,10 @@ If you want to add dependencies into `requirements.txt` or `dev-requirements.txt
 * Add your dependencies into `pyproject.toml`
 * Generate everything (and install them): `make all-dep-actions`
 
+### Bump version
+
+`tbump 1.0.1`
+
 ### Build Docker image
 
 TBD

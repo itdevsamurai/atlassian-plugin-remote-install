@@ -6,6 +6,7 @@ import click
 from atlassian.jira import JiraServer
 from config import Config
 from utils.apprise_notify import NotifyType, apprise_notify
+from utils.helper import check_required_params
 
 logger = logging.getLogger(__name__)
 
@@ -32,14 +33,17 @@ def remove_plugin_server(
     notify: list[str],
     timeout: float,
 ):
-    vars = {
-        "url": url if url else Config.ATLAS_URL,
-        "username": username if username else Config.ATLAS_USERNAME,
-        "password": password if password else Config.ATLAS_PASSWORD,
-    }
-    for key, val in vars.items():
-        if val == "":
-            raise ValueError(f"'{key}' is not set")
+    # Setting up vars
+    url = url if url else Config.ATLAS_URL
+    username = username if username else Config.ATLAS_USERNAME
+    password = password if password else Config.ATLAS_PASSWORD
+    check_required_params(
+        {
+            "url": url,
+            "username": username,
+            "password": password,
+        }
+    )
 
     if len(notify) == 0 and Config.NOTIFY_TITLE != "":
         notify = [Config.NOTIFY_URL]
@@ -77,6 +81,9 @@ def remove_plugin_server(
             err_flag = False
             final_msg = "Removing plugin is successful"
             break
+
+    # append jira info to the top of the final msg
+    final_msg = f"{url} - Jira *v{jira.version}*\n" + final_msg
 
     if notify:
         status = apprise_notify(

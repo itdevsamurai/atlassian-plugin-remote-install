@@ -7,6 +7,7 @@ import click
 from atlassian.jira import JiraServer
 from config import Config
 from utils.apprise_notify import NotifyType, apprise_notify
+from utils.helper import check_required_params
 
 logger = logging.getLogger(__name__)
 
@@ -46,28 +47,29 @@ def install_plugin_server(
         TimeoutError: when timeout threshold is reached
     """
     # Setting up vars
-    vars = {
-        "url": url if url else Config.ATLAS_URL,
-        "username": username if username else Config.ATLAS_USERNAME,
-        "password": password if password else Config.ATLAS_PASSWORD,
-    }
-    for key, val in vars.items():
-        if val == "":
-            raise ValueError(f"'{key}' is not set")
+    url = url if url else Config.ATLAS_URL
+    username = username if username else Config.ATLAS_USERNAME
+    password = password if password else Config.ATLAS_PASSWORD
+    check_required_params(
+        {
+            "url": url,
+            "username": username,
+            "password": password,
+        }
+    )
+
     if len(notify) == 0 and Config.NOTIFY_URL != "":
         notify = [Config.NOTIFY_URL]
 
     filepath = click.format_filename(filepath)
-    logger.info(
-        f"Installing plugin to {vars['url']} using '{filepath}'. Timeout: {timeout}"
-    )
+    logger.info(f"Installing plugin to {url} using '{filepath}'. Timeout: {timeout}")
     jira = JiraServer(
-        url=vars["url"],
-        username=vars["username"],
-        password=vars["password"],
+        url=url,
+        username=username,
+        password=password,
     )
     if jira.version is None:
-        msg = f"Instance '{vars['url']}' is not reachable."
+        msg = f"Instance '{url}' is not reachable."
         logger.error(msg)
         if notify:
             apprise_notify(
@@ -145,7 +147,7 @@ def install_plugin_server(
         break
 
     # append jira info to the top of the final msg
-    final_msg = f"{vars['url']} - Jira *v{jira.version}*\n" + final_msg
+    final_msg = f"{url} - Jira *v{jira.version}*\n" + final_msg
 
     if notify:
         status = apprise_notify(
