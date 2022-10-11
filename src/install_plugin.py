@@ -54,7 +54,7 @@ def install_plugin_server(
     for key, val in vars.items():
         if val == "":
             raise ValueError(f"'{key}' is not set")
-    if len(notify) == 0 and Config.NOTIFY_TITLE != "":
+    if len(notify) == 0 and Config.NOTIFY_URL != "":
         notify = [Config.NOTIFY_URL]
 
     filepath = click.format_filename(filepath)
