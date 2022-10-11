@@ -1,9 +1,6 @@
 import json
 from pathlib import Path
-from xmlrpc.client import boolean
-
 import requests
-
 from .atlassian_api import AtlassianServerAPI, AtlassianServerAPIHeaders
 
 
