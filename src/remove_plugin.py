@@ -63,7 +63,7 @@ def remove_plugin_server(
     # Remove the plugin from instance
     timeout_at = time.time() + timeout
 
-    # Checking if task is finished successfully
+    # Conduct removing, retry if not succeed
     final_msg: str = ""
     retryTime: int = 1
     err_flag: bool = False

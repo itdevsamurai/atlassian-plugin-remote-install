@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+from xmlrpc.client import boolean
 
 import requests
 
@@ -100,11 +101,19 @@ class JiraServer(AtlassianServerAPI):
 
         return res_json
 
-    def remove_plugin(self, plugin_key: str):
-        """
-        Delete plugin
-        :param plugin_key:
-        :return:
+    def remove_plugin(self, plugin_key: str) -> bool:
+        """Remove plugin from server instance
+
+        Remove plugin from server instance using api, retry if fails
+
+        Args:
+            plugin_key (str): Or App key, available on App manage setting
+
+        Returns:
+            bool: status
+
+        Raises:
+            Exception: An exception raised when response code is not 204
         """
         self.logger.info(f"Removing plugin '{plugin_key}' from instance.")
         res = self.request(
