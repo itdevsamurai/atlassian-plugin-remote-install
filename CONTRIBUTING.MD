@@ -2,7 +2,7 @@
 
 ## Development setup
 
-* Python >= 3.9. Refer Dockerfile to know which version is used officialy.
+* Python >= 3.9. Refer [Dockerfile](Dockerfile) to know which version is used officially.
 * [Activate your virtual environment](https://docs.python.org/3/library/venv.html)
 * Install `make`. Or you can read the `Makefile` to use the commands directly.
 * Install dev dependencies: `make install-req-dev`
@@ -19,14 +19,18 @@ If you want to add dependencies into `requirements.txt` or `dev-requirements.txt
 
 `tbump 1.0.1`
 
-### Build Docker image
+### Build & test Docker image
 
-TBD
+To build for local testing:
+
+```shell
+docker build --rm -t ghcr.io/itdevsamurai/atlassian-plugin-remote-install .
+```
+
+Run your test just like [Quick Start](README.md#quick-start) butwithout `--pull=always`.
 
 ## Contributing guide
 
-* Fork the project
-* Make changes, test your changes
-* Create PR to `main`
-* Make changes, test your changes
+* [Fork the project](https://github.com/itdevsamurai/atlassian-plugin-remote-install/fork)
+* Make changes, test your changes via local Python & via Docker
 * Create PR to `main`
