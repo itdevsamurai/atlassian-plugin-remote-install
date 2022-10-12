@@ -1,6 +1,7 @@
 import logging
 import time
 from pathlib import Path
+from uuid import uuid4
 
 import click
 
@@ -13,7 +14,7 @@ logger = logging.getLogger(__name__)
 
 
 @click.command(help="Install plugin on Atlassian server instance")
-@click.argument("filepath", type=click.Path(exists=True))
+@click.argument("file_input", type=click.File("rb"))
 @click.option("--url", "-url", default="", type=str, help="Atlassian instance base URL")
 @click.option("--username", "-u", default="", type=str, help="Username to login")
 @click.option("--password", "-p", default="", type=str, help="Password to login")
@@ -27,7 +28,7 @@ logger = logging.getLogger(__name__)
 )
 @click.option("--timeout", default=120, help="Install timeout in second")
 def install_plugin_server(
-    filepath: str,
+    file_input: bytes,
     url: str,
     username: str,
     password: str,
@@ -37,7 +38,7 @@ def install_plugin_server(
     """Install plugin on Atlassian server instance
 
     Args:
-        filepath (str): path to plugin file
+        file_input (bytes): plugin file in bytes
         url (str): instance base url
         username (str): admin username
         password (str): admin password
@@ -61,7 +62,7 @@ def install_plugin_server(
     if len(notify) == 0 and Config.NOTIFY_URL != "":
         notify = [Config.NOTIFY_URL]
 
-    filepath = click.format_filename(filepath)
+    filepath = stdin_to_temp_file(input=file_input)
     logger.info(f"Installing plugin to {url} using '{filepath}'. Timeout: {timeout}")
     jira = JiraServer(
         url=url,
@@ -79,8 +80,9 @@ def install_plugin_server(
             )
         raise Exception(msg)
 
-    # Upload the plugin to instance
+    # Upload the plugin to instance, then remove the tmp file
     upload_res = jira.upload_plugin(Path(filepath))
+    filepath.unlink()
     task_id = upload_res["id"]
     timeout_at = time.time() + timeout
 
@@ -169,3 +171,19 @@ def install_plugin_server(
         raise Exception(final_msg)
 
     logger.info(final_msg)
+
+
+def stdin_to_temp_file(input) -> Path:
+    """Write file from stdin to a temp file and return the path of temp file
+
+    Args:
+        input (File): input file from click.File
+
+    Returns:
+        Path: path to the temp file
+    """
+    output_dir_path = Path("/tmp/plugin_remote_install/")
+    output_dir_path.mkdir(parents=True, exist_ok=True)
+    file_path = output_dir_path / str(uuid4())
+    file_path.write_bytes(input.read())
+    return file_path

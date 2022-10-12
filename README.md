@@ -27,7 +27,7 @@ docker run --rm -it \
     -u username \
     -p passwordhere \
     -n "slack://xoxb-token-here/#channel-name-here" \
-    path/plugin-file.obr
+    - < path/plugin-file.obr
 ```
 
 This command will install plugin from `path/plugin-file.obr` to Jira
