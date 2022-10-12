@@ -7,7 +7,11 @@
 
 ## Quick Start
 
-See [Usage](https://github.com/itdevsamurai/atlassian-plugin-remote-install#usage)
+{%
+   include-markdown "../README.md"
+   start="### Quick Start"
+   end="### Notification"
+%}
 
 ## CLI Reference
 
@@ -23,3 +27,5 @@ Special thanks to:
 * Notification powered by [Apprise](https://github.com/caronc/apprise-api)
 * [atlassian-api/atlassian-python-api](https://github.com/atlassian-api/atlassian-python-api)
 * [mkdocs-click](https://github.com/DataDog/mkdocs-click/)
+* [mkdocs-material](https://squidfunk.github.io/mkdocs-material/)
+* [mondeja/mkdocs-include-markdown-plugin](https://github.com/mondeja/mkdocs-include-markdown-plugin)

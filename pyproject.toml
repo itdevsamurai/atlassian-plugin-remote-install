@@ -22,6 +22,8 @@ dev = [
   "tbump",
   "mkdocs",
   "mkdocs-click",
+  "mkdocs-material",
+  "mkdocs-include-markdown-plugin",
 ]
 
 

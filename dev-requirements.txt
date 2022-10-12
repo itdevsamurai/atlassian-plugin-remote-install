@@ -42,7 +42,9 @@ isort==5.10.1
     #   atlassian-plugin-remote-install (pyproject.toml)
     #   pylint
 jinja2==3.1.2
-    # via mkdocs
+    # via
+    #   mkdocs
+    #   mkdocs-material
 lazy-object-proxy==1.7.1
     # via astroid
 markdown==3.3.7
@@ -50,6 +52,8 @@ markdown==3.3.7
     #   apprise
     #   mkdocs
     #   mkdocs-click
+    #   mkdocs-material
+    #   pymdown-extensions
 markupsafe==2.1.1
     # via jinja2
 mccabe==0.7.0
@@ -57,9 +61,17 @@ mccabe==0.7.0
 mergedeep==1.3.4
     # via mkdocs
 mkdocs==1.4.0
-    # via atlassian-plugin-remote-install (pyproject.toml)
+    # via
+    #   atlassian-plugin-remote-install (pyproject.toml)
+    #   mkdocs-material
 mkdocs-click==0.8.0
     # via atlassian-plugin-remote-install (pyproject.toml)
+mkdocs-include-markdown-plugin==3.9.0
+    # via atlassian-plugin-remote-install (pyproject.toml)
+mkdocs-material==8.5.6
+    # via atlassian-plugin-remote-install (pyproject.toml)
+mkdocs-material-extensions==1.0.3
+    # via mkdocs-material
 mypy-extensions==0.4.3
     # via black
 oauthlib==3.2.1
@@ -73,9 +85,13 @@ platformdirs==2.5.2
     #   black
     #   pylint
 pygments==2.13.0
-    # via rich
+    # via
+    #   mkdocs-material
+    #   rich
 pylint==2.15.3
     # via atlassian-plugin-remote-install (pyproject.toml)
+pymdown-extensions==9.6
+    # via mkdocs-material
 pyparsing==3.0.9
     # via packaging
 python-dateutil==2.8.2
@@ -91,6 +107,7 @@ requests==2.28.1
     # via
     #   apprise
     #   atlassian-plugin-remote-install (pyproject.toml)
+    #   mkdocs-material
     #   requests-oauthlib
 requests-oauthlib==1.3.1
     # via apprise
