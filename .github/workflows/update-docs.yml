@@ -12,4 +12,5 @@ jobs:
         with:
           python-version: 3.x
       - run: pip install mkdocs mkdocs-click
+      - run: export PYTHONPATH=$PWD
       - run: mkdocs gh-deploy --force
