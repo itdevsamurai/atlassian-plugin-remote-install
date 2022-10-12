@@ -1,5 +1,5 @@
 [project]
-name = "atlassian-plugin-remote-installaion"
+name = "atlassian-plugin-remote-install"
 
 description = "Remotely install plugin to Atlassian instance"
 version = "0.4.3"

@@ -5,11 +5,11 @@
 #    pip-compile --extra=dev --output-file=dev-requirements.txt pyproject.toml
 #
 apprise==1.0.0
-    # via atlassian-plugin-remote-installaion (pyproject.toml)
+    # via atlassian-plugin-remote-install (pyproject.toml)
 astroid==2.12.10
     # via pylint
 black==22.8.0
-    # via atlassian-plugin-remote-installaion (pyproject.toml)
+    # via atlassian-plugin-remote-install (pyproject.toml)
 certifi==2022.9.24
     # via requests
 charset-normalizer==2.1.1
@@ -19,7 +19,7 @@ cli-ui==0.17.2
 click==8.1.3
     # via
     #   apprise
-    #   atlassian-plugin-remote-installaion (pyproject.toml)
+    #   atlassian-plugin-remote-install (pyproject.toml)
     #   black
     #   mkdocs
     #   mkdocs-click
@@ -39,7 +39,7 @@ idna==3.4
     # via requests
 isort==5.10.1
     # via
-    #   atlassian-plugin-remote-installaion (pyproject.toml)
+    #   atlassian-plugin-remote-install (pyproject.toml)
     #   pylint
 jinja2==3.1.2
     # via mkdocs
@@ -57,9 +57,9 @@ mccabe==0.7.0
 mergedeep==1.3.4
     # via mkdocs
 mkdocs==1.4.0
-    # via atlassian-plugin-remote-installaion (pyproject.toml)
+    # via atlassian-plugin-remote-install (pyproject.toml)
 mkdocs-click==0.8.0
-    # via atlassian-plugin-remote-installaion (pyproject.toml)
+    # via atlassian-plugin-remote-install (pyproject.toml)
 mypy-extensions==0.4.3
     # via black
 oauthlib==3.2.1
@@ -75,7 +75,7 @@ platformdirs==2.5.2
 pygments==2.13.0
     # via rich
 pylint==2.15.3
-    # via atlassian-plugin-remote-installaion (pyproject.toml)
+    # via atlassian-plugin-remote-install (pyproject.toml)
 pyparsing==3.0.9
     # via packaging
 python-dateutil==2.8.2
@@ -90,12 +90,12 @@ pyyaml-env-tag==0.1
 requests==2.28.1
     # via
     #   apprise
-    #   atlassian-plugin-remote-installaion (pyproject.toml)
+    #   atlassian-plugin-remote-install (pyproject.toml)
     #   requests-oauthlib
 requests-oauthlib==1.3.1
     # via apprise
 rich==12.5.1
-    # via atlassian-plugin-remote-installaion (pyproject.toml)
+    # via atlassian-plugin-remote-install (pyproject.toml)
 schema==0.7.5
     # via tbump
 six==1.16.0
@@ -105,7 +105,7 @@ six==1.16.0
 tabulate==0.8.10
     # via cli-ui
 tbump==6.9.0
-    # via atlassian-plugin-remote-installaion (pyproject.toml)
+    # via atlassian-plugin-remote-install (pyproject.toml)
 tomli==2.0.1
     # via
     #   black
