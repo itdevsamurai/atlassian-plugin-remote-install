@@ -4,7 +4,7 @@
 
 Remotely install Atlassian plugins to Jira, Confluence server/datacenter/cloud.
 
-See [CONTRIBUTING](CONTRIBUTING.MD) for development setup & contributing guide.
+[Documentation](https://itdevsamurai.github.io/atlassian-plugin-remote-install/)
 
 ## Usage
 
@@ -76,3 +76,7 @@ Status:
 * [ ] Cloud
   * [ ] Jira
   * [ ] Confluence
+
+## Contributing
+
+See [CONTRIBUTING](CONTRIBUTING.MD) for development setup & contributing guide.
