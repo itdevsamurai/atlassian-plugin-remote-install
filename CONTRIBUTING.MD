@@ -17,7 +17,7 @@ If you want to add dependencies into `requirements.txt` or `dev-requirements.txt
 
 ### Bump version
 
-`tbump 1.0.1`
+To bump the version of the project to `1.0.1`: `tbump 1.0.1`
 
 ### Build & test Docker image
 
@@ -27,10 +27,11 @@ To build for local testing:
 docker build --rm -t ghcr.io/itdevsamurai/atlassian-plugin-remote-install .
 ```
 
-Run your test just like [Quick Start](README.md#quick-start) butwithout `--pull=always`.
+Run your test just like [Quick Start](README.md#quick-start) but without `--pull=always`.
 
 ## Contributing guide
 
 * [Fork the project](https://github.com/itdevsamurai/atlassian-plugin-remote-install/fork)
-* Make changes, test your changes via local Python & via Docker
+* Make changes
+* Test your changes via local Python & via Docker
 * Create PR to `main`
