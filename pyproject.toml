@@ -15,7 +15,7 @@ dependencies = [
   "rich==12.5.1",
 ]
 [project.optional-dependencies]
-dev = ["black", "isort", "pylint", "tbump"]
+dev = ["black", "isort", "pylint", "tbump", "mkdocs-click", "mkdocs"]
 
 
 ############### tbump ###############

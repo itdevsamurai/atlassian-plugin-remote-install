@@ -1,26 +1,25 @@
-# atlassian-plugin-remote-install
+# Atlassian Plugin Remote Install
 
 Remotely install Atlassian plugins to Jira, Confluence server/datacenter/cloud.
-
-Status:
-
-* [ ] Server/datacenter
-  * [x] Jira
-  * [ ] Confluence
-* [ ] Cloud
-  * [ ] Jira
-  * [ ] Confluence
 
 See [CONTRIBUTING](CONTRIBUTING.MD) for development setup & contributing guide.
 
 ## Usage
 
-### Docker
+We will only focus on the latest version of the tool as Docker image, hosted at
+[Github Package](https://github.com/orgs/itdevsamurai/packages/container/package/atlassian-plugin-remote-install)
 
-Quick start:
+Docker tags:
+
+* `latest`: latest stable release.
+* `main`: latest build on `main` branch. This is a beta build.
+* Semver tags (`0.4.0`, `0.3.1`...): for archiving purpose, can be used to rollback if
+you have any issue with stable build.
+
+### Quick Start
 
 ```shell
-docker run --rm -it \
+docker run --rm -i \
     ghcr.io/itdevsamurai/atlassian-plugin-remote-install \
     install-plugin-server \
     -url https://jira.example.com \
@@ -35,6 +34,8 @@ instance `https://jira.example.com` with credentials `username/passwordhere`.
 
 It will then notify you via Slack on channel `#channel-name-here`
 
+For more info about commands & options, see [CLI reference](https://itdevsamurai.github.io/atlassian-plugin-remote-install/cli/)
+
 ### Notification
 
 Powered by [Apprise](https://github.com/caronc/apprise-api), it supports a large
@@ -42,13 +43,19 @@ number of services (SMS, email, Slack, Discord, Teams...)
 
 See the list & configuration URL here: [Apprise Wiki](https://github.com/caronc/apprise/wiki)
 
+### In pipelines
+
+Can be used in Bitbucket, Github Actions... to quickly build your plugin & deploy to staging instance.
+
+See [Pipelines](https://itdevsamurai.github.io/atlassian-plugin-remote-install/pipelines/)
+
 ### Non-Docker
 
 See [CONTRIBUTING](CONTRIBUTING.MD) to install the dependencies.
 
 Invoke `python src/main.py` to see help.
 
-### Environments
+### Environment Variables
 
 Only if you don't want to use arguments in the CLI.
 
@@ -57,7 +64,13 @@ Only if you don't want to use arguments in the CLI.
 * `ATLAS_USERNAME`: username to login to Atlassian instance. Can be override in command option.
 * `ATLAS_PASSWORD`: password to login to Atlassian instance. Can be override in command option.
 
-## Credits
+### Feature status
 
-* Notification powered by [Apprise](https://github.com/caronc/apprise-api)
-* [atlassian-api/atlassian-python-api](https://github.com/atlassian-api/atlassian-python-api)
+Status:
+
+* [ ] Server/datacenter
+  * [x] Jira
+  * [ ] Confluence
+* [ ] Cloud
+  * [ ] Jira
+  * [ ] Confluence

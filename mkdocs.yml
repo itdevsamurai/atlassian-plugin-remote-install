@@ -1,0 +1,8 @@
+site_name: Atlassian Plugin Remote Install
+repo_url: https://github.com/itdevsamurai/atlassian-plugin-remote-install
+edit_uri: edit/main/docs/
+theme: readthedocs
+
+markdown_extensions:
+  - mkdocs-click
+  - attr_list

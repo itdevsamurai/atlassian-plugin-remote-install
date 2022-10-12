@@ -20,6 +20,7 @@ rich_traceback_install(show_locals=logging.getLogger().level < logging.INFO)
 
 @click.group()
 def cli():
+    """Main entrypoint."""
     pass
 
 
