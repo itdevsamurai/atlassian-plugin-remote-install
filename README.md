@@ -22,6 +22,7 @@ you have any issue with stable build.
 
 ```shell
 docker run --rm -i \
+    --pull=always \
     ghcr.io/itdevsamurai/atlassian-plugin-remote-install \
     install-plugin-server \
     -url https://jira.example.com \
