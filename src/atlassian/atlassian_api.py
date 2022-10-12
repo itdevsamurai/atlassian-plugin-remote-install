@@ -35,6 +35,15 @@ class AtlassianServerAPI:
         session: requests.Session | None = None,
         timeout: float = 30,
     ) -> None:
+        """Atlassian Server API client
+
+        Args:
+            url (str): instance URL
+            username (str): username to login
+            password (str): password to login
+            session (requests.Session | None, optional): requests session to inherit. Defaults to None.
+            timeout (float, optional): default timeout for API call. Defaults to 30.
+        """
         self.logger = logging.getLogger(__name__)
         self.url = url.strip("/")
         self.timeout = timeout
@@ -64,8 +73,6 @@ class AtlassianServerAPI:
         if files is None:
             if data:
                 data = json_dumps(data)
-            if json:
-                json = json_dumps(data)
 
         req_url = f"{self.url}{path}"
         if url:
