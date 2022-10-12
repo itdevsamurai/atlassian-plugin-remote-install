@@ -18,12 +18,13 @@ dependencies = [
 dev = [
   "black",
   "isort",
-  "pylint",
-  "tbump",
   "mkdocs",
   "mkdocs-click",
   "mkdocs-material",
   "mkdocs-include-markdown-plugin",
+  "pylint",
+  "pre-commit",
+  "tbump",
 ]
 
 
