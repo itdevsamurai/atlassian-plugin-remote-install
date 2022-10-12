@@ -1,5 +1,7 @@
 # Atlassian Plugin Remote Install
 
+[![Publish Docker Image](https://github.com/itdevsamurai/atlassian-plugin-remote-install/actions/workflows/publish-docker-image.yml/badge.svg)](https://github.com/itdevsamurai/atlassian-plugin-remote-install/actions/workflows/publish-docker-image.yml)
+
 * To create issue, view source code: [Github Repository](https://github.com/itdevsamurai/atlassian-plugin-remote-install)
 * To contribute or run it locally, see: [Contributing Guide](https://github.com/itdevsamurai/atlassian-plugin-remote-install/blob/main/CONTRIBUTING.MD)
 

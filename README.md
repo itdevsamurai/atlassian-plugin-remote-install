@@ -1,5 +1,7 @@
 # Atlassian Plugin Remote Install
 
+[![Publish Docker Image](https://github.com/itdevsamurai/atlassian-plugin-remote-install/actions/workflows/publish-docker-image.yml/badge.svg)](https://github.com/itdevsamurai/atlassian-plugin-remote-install/actions/workflows/publish-docker-image.yml)
+
 Remotely install Atlassian plugins to Jira, Confluence server/datacenter/cloud.
 
 See [CONTRIBUTING](CONTRIBUTING.MD) for development setup & contributing guide.
