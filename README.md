@@ -8,16 +8,6 @@ Remotely install Atlassian plugins to Jira, Confluence server/datacenter/cloud.
 
 ## Usage
 
-We will only focus on the latest version of the tool as Docker image, hosted at
-[Github Package](https://github.com/orgs/itdevsamurai/packages/container/package/atlassian-plugin-remote-install)
-
-Docker tags:
-
-* `latest`: latest stable release.
-* `main`: latest build on `main` branch. This is a beta build.
-* Semver tags (`0.4.0`, `0.3.1`...): for archiving purpose, can be used to rollback if
-you have any issue with stable build.
-
 ### Quick Start
 
 ```shell
@@ -66,6 +56,19 @@ Only if you don't want to use arguments in the CLI.
 * `ATLAS_URL`: base url of Atlassian instance. Can be override in command option.
 * `ATLAS_USERNAME`: username to login to Atlassian instance. Can be override in command option.
 * `ATLAS_PASSWORD`: password to login to Atlassian instance. Can be override in command option.
+
+### Supported platform
+
+Our main focus is using it on pipelines via Docker image and it is hosted on [Github Package](https://github.com/orgs/itdevsamurai/packages/container/package/atlassian-plugin-remote-install).
+
+Docker tags:
+
+* `latest`: latest stable release.
+* `main`: latest build on `main` branch. This is a beta build.
+* Semver tags (`0.4.0`, `0.3.1`...): for archiving purpose, can be used to rollback if
+you have any issue with stable build.
+
+Supported arch: `amd64`, `arm64`, `arm/v7`, `arm/v6`
 
 ### Feature status
 
