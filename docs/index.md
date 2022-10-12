@@ -20,3 +20,4 @@ Special thanks to:
 * Atlassian
 * Notification powered by [Apprise](https://github.com/caronc/apprise-api)
 * [atlassian-api/atlassian-python-api](https://github.com/atlassian-api/atlassian-python-api)
+* [mkdocs-click](https://github.com/DataDog/mkdocs-click/)
