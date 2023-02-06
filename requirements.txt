@@ -20,7 +20,7 @@ idna==3.4
     # via requests
 markdown==3.4.1
     # via apprise
-oauthlib==3.2.1
+oauthlib==3.2.2
     # via requests-oauthlib
 pygments==2.13.0
     # via rich
