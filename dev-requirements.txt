@@ -103,7 +103,7 @@ pygments==2.13.0
     #   rich
 pylint==2.15.3
     # via atlassian-plugin-remote-install (pyproject.toml)
-pymdown-extensions==9.6
+pymdown-extensions==10.0
     # via mkdocs-material
 pyparsing==3.0.9
     # via packaging
