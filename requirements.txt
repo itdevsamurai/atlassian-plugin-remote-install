@@ -22,7 +22,7 @@ markdown==3.4.1
     # via apprise
 oauthlib==3.2.2
     # via requests-oauthlib
-pygments==2.13.0
+pygments==2.15.0
     # via rich
 pyyaml==6.0
     # via apprise
