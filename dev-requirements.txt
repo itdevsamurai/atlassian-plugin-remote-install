@@ -97,7 +97,7 @@ platformdirs==2.5.2
     #   virtualenv
 pre-commit==2.20.0
     # via atlassian-plugin-remote-install (pyproject.toml)
-pygments==2.13.0
+pygments==2.15.0
     # via
     #   mkdocs-material
     #   rich
