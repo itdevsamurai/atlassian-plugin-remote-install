@@ -1,3 +1,4 @@
+.PHONY: all-dep-actions req req-dev install-req install-req-dev
 # .DEFAULT_GOAL := req
 
 all-dep-actions:
@@ -14,7 +15,7 @@ install-req-dev:
 
 req:
 	@pip install pip-tools
-	@pip-compile -o requirements.txt pyproject.toml
+	@pip-compile --upgrade -o requirements.txt pyproject.toml
 req-dev:
 	@pip install pip-tools
-	@pip-compile --extra=dev --output-file=dev-requirements.txt pyproject.toml
+	@pip-compile  --upgrade --extra=dev --output-file=dev-requirements.txt pyproject.toml
