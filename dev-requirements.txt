@@ -43,7 +43,7 @@ ghp-import==2.1.0
     # via mkdocs
 identify==2.5.6
     # via pre-commit
-idna==3.4
+idna==3.7
     # via requests
 isort==5.10.1
     # via
