@@ -49,7 +49,7 @@ isort==5.10.1
     # via
     #   atlassian-plugin-remote-install (pyproject.toml)
     #   pylint
-jinja2==3.1.2
+jinja2==3.1.4
     # via
     #   mkdocs
     #   mkdocs-material
