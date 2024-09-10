@@ -37,5 +37,5 @@ rich==12.5.1
     # via atlassian-plugin-remote-install (pyproject.toml)
 six==1.16.0
     # via apprise
-urllib3==1.26.12
+urllib3==1.26.19
     # via requests
