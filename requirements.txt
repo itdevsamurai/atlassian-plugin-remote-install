@@ -30,7 +30,7 @@ pygments==2.18.0
     # via rich
 pyyaml==6.0.2
     # via apprise
-requests==2.32.3
+requests==2.32.4
     # via
     #   apprise
     #   atlassian-plugin-remote-install (pyproject.toml)
