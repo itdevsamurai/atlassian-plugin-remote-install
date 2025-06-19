@@ -39,5 +39,5 @@ requests-oauthlib==2.0.0
     # via apprise
 rich==13.8.0
     # via atlassian-plugin-remote-install (pyproject.toml)
-urllib3==2.2.2
+urllib3==2.5.0
     # via requests
