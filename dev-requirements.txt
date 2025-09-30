@@ -87,7 +87,7 @@ mkdocs-click==0.8.1
     # via atlassian-plugin-remote-install (pyproject.toml)
 mkdocs-get-deps==0.2.0
     # via mkdocs
-mkdocs-include-markdown-plugin==6.2.2
+mkdocs-include-markdown-plugin==7.1.8
     # via atlassian-plugin-remote-install (pyproject.toml)
 mkdocs-material==9.5.34
     # via atlassian-plugin-remote-install (pyproject.toml)
