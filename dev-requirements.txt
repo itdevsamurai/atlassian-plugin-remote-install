@@ -123,7 +123,7 @@ pygments==2.18.0
     #   rich
 pylint==3.2.7
     # via atlassian-plugin-remote-install (pyproject.toml)
-pymdown-extensions==10.9
+pymdown-extensions==10.16.1
     # via mkdocs-material
 python-dateutil==2.9.0.post0
     # via ghp-import
