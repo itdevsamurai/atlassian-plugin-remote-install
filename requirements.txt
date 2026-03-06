@@ -18,7 +18,7 @@ click==8.1.7
     #   atlassian-plugin-remote-install (pyproject.toml)
 idna==3.8
     # via requests
-markdown==3.7
+markdown==3.8.1
     # via apprise
 markdown-it-py==3.0.0
     # via rich
