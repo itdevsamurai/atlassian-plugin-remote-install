@@ -10,7 +10,7 @@ astroid==3.2.4
     # via pylint
 babel==2.16.0
     # via mkdocs-material
-black==24.8.0
+black==26.3.1
     # via atlassian-plugin-remote-install (pyproject.toml)
 bracex==2.5
     # via wcmatch
