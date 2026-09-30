@@ -24,7 +24,7 @@ markdown-it-py==3.0.0
     # via rich
 mdurl==0.1.2
     # via markdown-it-py
-oauthlib==3.2.2
+oauthlib==4.0.0
     # via requests-oauthlib
 pygments==2.20.0
     # via rich
