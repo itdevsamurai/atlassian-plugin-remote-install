@@ -14,7 +14,7 @@ black==26.3.1
     # via atlassian-plugin-remote-install (pyproject.toml)
 bracex==2.5
     # via wcmatch
-certifi==2024.8.30
+certifi==2026.10.19
     # via
     #   apprise
     #   requests
