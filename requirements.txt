@@ -4,7 +4,7 @@
 #
 #    pip-compile --output-file=requirements.txt pyproject.toml
 #
-apprise==1.9.0
+apprise==1.11.0
     # via atlassian-plugin-remote-install (pyproject.toml)
 certifi==2024.8.30
     # via
