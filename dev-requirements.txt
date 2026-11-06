@@ -121,7 +121,7 @@ pygments==2.20.0
     # via
     #   mkdocs-material
     #   rich
-pylint==3.2.7
+pylint==4.0.9
     # via atlassian-plugin-remote-install (pyproject.toml)
 pymdown-extensions==11.0.1
     # via mkdocs-material
