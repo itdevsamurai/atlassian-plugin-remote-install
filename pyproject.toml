@@ -9,7 +9,7 @@ authors = [{ name = "Trung Le", email = "trung.le@devsamurai.com" }]
 requires-python = ">=3.10"
 
 dependencies = [
-  "apprise==1.9.0",
+  "apprise==1.11.0",
   "click==8.1.7",
   "requests==2.33.0",
   "rich==13.8.0",
